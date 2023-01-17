@@ -1,12 +1,13 @@
 const express = require('express'); // récupération package express qui permet de gérer l'application
 const mongoose = require('mongoose'); // récupération package mongoose qui permet de récupérer la base données MongoDB
-const userRoutes = require('./routes/user') // récupération du fichier user
 const path = require('path') // récupération du chemin des images
 const dotenv = require("dotenv") // permet de charger les variables d'environnement
 dotenv.config()
 
 
-const sauceRoutes = require('./routes/sauce')
+const sauceRoutes = require('./routes/sauce') // récupération du fichier sauce
+const userRoutes = require('./routes/user') // récupération du fichier user
+
 
 // connexion base de données 
 mongoose.connect( process.env.MONGO_DB, // connexion mongoose via mongoDB database 
@@ -15,6 +16,9 @@ mongoose.connect( process.env.MONGO_DB, // connexion mongoose via mongoDB databa
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
  
+
+
+
 const app = express();
 app.use(express.json());
 

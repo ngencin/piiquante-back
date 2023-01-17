@@ -17,8 +17,12 @@ exports.getAllSauce = (req, res, next) => {
     delete sauceObject._userId 
     const sauce = new Sauce ({
         ...sauceObject,
-        _userId: req.auth.userId,
-        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+        userId: req.auth.userId,
+        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
+        likes: 0,
+        dislikes: 0,
+        usersLiked: [' '],
+        usersdisLiked: [' '],
     })
     sauce.save()
     .then(() => { res.status(201).json({message: 'Sauce enregistrée !'})})
@@ -55,12 +59,20 @@ exports.getOneSauce = (req, res, next) => {
 // fonction qui permet d'aimer / ou non une sauce 
 exports.likedislikeSauce = (req, res, next) => { 
     Sauce.findOne({ _id: req.params.id})
+    .then((sauce) => {
+      console.log(sauce)
+      if(sauce.usersLiked.includes(req.body.userId)){
+        console.log("hello")
+      } else{
+        console.log("false")
+      }// si le userliked est false et si le like est === 1 alors le like a +1
+    })
   }
 
 // fonction qui permet de supprimer une sauce
   exports.deleteSauce = (req, res, next) => { 
-    Sauce.findOne({ _id: req.params})
-    .then(() => {
+    Sauce.findOne({ _id: req.params.id})
+    .then((sauce) => {
         if (sauce.userId != req.auth.userId) { //empêche l'utilisateur de supprimer la sauce si elle n'a pas été ajoutée par lui-même
             res.status(401).json({ message: 'Non autorisé'})
         } else {
