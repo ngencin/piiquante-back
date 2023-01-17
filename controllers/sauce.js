@@ -58,16 +58,9 @@ exports.getOneSauce = (req, res, next) => {
 
 // fonction qui permet d'aimer / ou non une sauce 
 exports.likedislikeSauce = (req, res, next) => { 
-    Sauce.findOne({ _id: req.params.id})
-    .then((sauce) => {
-      console.log(sauce)
-      if(sauce.usersLiked.includes(req.body.userId)){
-        console.log("hello")
-      } else{
-        console.log("false")
-      }// si le userliked est false et si le like est === 1 alors le like a +1
-    })
-  }
+  
+}
+
 
 // fonction qui permet de supprimer une sauce
   exports.deleteSauce = (req, res, next) => { 
