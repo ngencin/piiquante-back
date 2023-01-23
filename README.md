@@ -46,7 +46,7 @@ Exécutez l'application en tant qu'utilisateur pour vérifier que toutes les fon
 ■ npm install bcrypt 		// *fonction de hachage du mot de passe*  
 ■ npm install jsonwebtoken 		// *création du token*  
 ■ npm install multer 		// *gestion des images*  
-■ npm install dotenv --save 		// *variables d'environnement*  
+■ npm install dotenv 		// *variables d'environnement*  
 
 
 Lancement du server backend : **nodemon server js**  
