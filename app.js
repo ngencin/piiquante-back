@@ -4,7 +4,6 @@ const path = require('path') // récupération du chemin des images
 const dotenv = require("dotenv") // permet de charger les variables d'environnement
 dotenv.config()
 
-
 const sauceRoutes = require('./routes/sauce') // récupération du fichier sauce
 const userRoutes = require('./routes/user') // récupération du fichier user
 
@@ -31,7 +30,7 @@ app.use(express.json());
 
   app.use('/api/sauces', sauceRoutes)
   app.use('/api/auth', userRoutes)
-
+  
   app.use('/images', express.static(path.join(__dirname, 'images')))
 
 

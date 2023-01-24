@@ -12,9 +12,9 @@ exports.getAllSauce = (req, res, next) => {
 
 // fonction qui permet de créer une sauce
 exports.createSauce = (req, res, next) => {
-  const sauceObject = req.body
+  const sauceObject = JSON.parse(req.body.sauce)
   delete sauceObject._id
-  delete sauceObject._userId
+  delete sauceObject._userId 
   const sauce = new Sauce({
     ...sauceObject,
     userId: req.auth.userId,
@@ -24,6 +24,8 @@ exports.createSauce = (req, res, next) => {
     usersLiked: [' '],
     usersdisLiked: [' '],
   })
+  
+ 
   sauce.save()
     .then(() => { res.status(201).json({ message: 'Sauce enregistrée !' }) })
     .catch(error => { res.status(400).json({ error }) })
