@@ -11,7 +11,7 @@ const User = require('../models/User')
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10) // mot de passe recueilli du frontend - 10 tours plus de sécurité
     .then(hash => {
-        const user = new User({ // nouvel utilisateur email et mot de passe crypté
+       const user = new User({ // nouvel utilisateur email et mot de passe crypté
             email: req.body.email, // email passé dans le CORS de la requête 
             password: hash // mot de passe crypté
         })
@@ -19,9 +19,9 @@ exports.signup = (req, res, next) => {
         .then(()=> res.status(201).json({ message: 'Utilisateur créé !' }))
         .catch(error => res.status(400).json({ error }))
     })
-    .catch(error => res.status(500).json({ error}))  // erreur 500 côté serveur
+  .catch(error => res.status(500).json({ error}))  // erreur 500 côté serveur
 
-}
+} 
 
 // connexion de l'utilisateur déjà inscrit 
 exports.login = (req, res, next) => {

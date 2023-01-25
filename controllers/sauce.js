@@ -67,7 +67,7 @@ exports.likedislikeSauce = (req, res, next) => {
         Sauce.updateOne( // mise à jour dans la base de données
           { _id: req.params.id },
           {
-            $inc: { likes: 1 }, // opérateur incrément a +1
+            $inc: { likes: 1 }, // opérateur incrément mongodb a +1
             $push: { usersLiked: req.auth.userId } // opérateur push qui ajoute le userId au userLiked
           })
           .then(() => res.status(201).json({ message: 'Sauce likée' }))
@@ -119,7 +119,7 @@ exports.deleteSauce = (req, res, next) => {
         res.status(403).json({ message: 'Demande non autorisée' })
       } else {
         const filename = sauce.imageUrl.split('/images/')[1]
-        fs.unlink(`images/${filename}`, () => { // suppression de l'image
+        fs.unlink(`./images/${filename}`, () => { // suppression de l'image
           Sauce.deleteOne({ _id: req.params.id }) // supression de la sauce 
             .then(() => res.status(200).json({ message: 'Sauce supprimée !' }))
             .catch(error => res.status(401).json({ error }))

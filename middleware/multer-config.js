@@ -1,5 +1,5 @@
 const multer = require('multer') // récupération package multer qui permet de gérer les fichiers
-console.log(multer)
+
 const MIME_TYPES = {
   'image/jpg': 'jpg',
   'image/jpeg': 'jpg',

@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken') //récupération package json web token qui 
 const dotenv = require("dotenv") // permet de charger les variables d'environnement
 dotenv.config()
 
-//middleware qui permet d'extraire les informations contenues dans le Token et vérification du Token si ile st valide
+//middleware qui permet d'extraire les informations contenues dans le Token et vérification du Token si il est valide
 module.exports = (req, res, next) => {
     try{ 
         const token = req.headers.authorization.split(' ')[1] // récupération du token 
