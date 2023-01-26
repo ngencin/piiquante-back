@@ -14,7 +14,7 @@ exports.getAllSauce = (req, res, next) => {
 exports.createSauce = (req, res, next) => {
   const sauceObject = JSON.parse(req.body.sauce)
   delete sauceObject._id
-  delete sauceObject._userId 
+  delete sauceObject._userId
   const sauce = new Sauce({
     ...sauceObject,
     userId: req.auth.userId,
@@ -24,8 +24,8 @@ exports.createSauce = (req, res, next) => {
     usersLiked: [' '],
     usersdisLiked: [' '],
   })
-  
- 
+
+
   sauce.save()
     .then(() => { res.status(201).json({ message: 'Sauce enregistrée !' }) })
     .catch(error => { res.status(400).json({ error }) })
@@ -44,7 +44,7 @@ exports.modifySauce = (req, res, next) => {
     ...JSON.parse(req.body.sauce),
     imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}` // modifie l'image
   } : { ...req.body }
-  delete sauceObject._userId   
+  delete sauceObject._userId
   Sauce.findOne({ _id: req.params.id }) // récupération d'un id d'une sauce
     .then((sauce) => {
       if (sauce.userId != req.auth.userId) { // /empêche l'utilisateur de modifier la sauce si l'userId est différent de celui qui a crée la sauce
@@ -129,4 +129,3 @@ exports.deleteSauce = (req, res, next) => {
     })
     .catch(error => res.status(500).json({ error }))
 }
-
