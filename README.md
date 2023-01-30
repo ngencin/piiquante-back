@@ -48,7 +48,7 @@ Exécutez l'application en tant qu'utilisateur pour vérifier que toutes les fon
 ■ npm install multer 		// *gestion des images*  
 ■ npm install dotenv 		// *variables d'environnement*  
 ■ npm install mongoose-mongodb-errors 		// *transformer les erreurs de type mongodb en instances de Mongoose ValidationError*  
-
+■ npm install password-validator // *valide le mot de passe selon des règles*  
 
 
 
