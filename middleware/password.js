@@ -6,13 +6,13 @@ const passwordSchema = new passwordValidator()
 
 // le schema que le mot de passe doit respecter
 passwordSchema
-.is().min(4)                                    // Minimum 8 caractères
-.is().max(15)                                  // Maximum 100 caractères
+.is().min(8)                                    // Minimum 8 caractères 
+.is().max(15)                                  // Maximum 15 caractères
 .has().uppercase()                              // Lettres en majuscules autorisées
 .has().lowercase()                              // Lettres en minuscules autorisées
 .has().digits(2)                                // Mettre deux chiffres minimum
 .has().not().spaces()                           // Espaces non autorisés
-.is().not().oneOf(['Passw0rd', 'Password123']); // Mot interdit
+.is().not().oneOf(['Passw0rd', 'Password123']); // Mots interdit
 
 
 // vérfication du mot de passe
